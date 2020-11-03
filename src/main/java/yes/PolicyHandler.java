@@ -25,7 +25,7 @@ public class PolicyHandler{
             System.out.println("##### listener Cancel : " + payCancelled.toJson());
 
             Cancellation cancellation = new Cancellation();
-            cancellation.setPayId(payCancelled.getId());
+            cancellation.setOrderId(payCancelled.getOrderId());
             cancellation.setStatus("Delivery Canceled");
 
             cancellationRepository.save(cancellation);

@@ -11,7 +11,7 @@ public class Cancellation {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Long id;
-    private Long payId;
+    private Long orderId;
     private String status;
 
     @PostUpdate
@@ -31,12 +31,12 @@ public class Cancellation {
     public void setId(Long id) {
         this.id = id;
     }
-    public Long getPayId() {
-        return payId;
+    public Long getOrderId() {
+        return orderId;
     }
 
-    public void setPayId(Long payId) {
-        this.payId = payId;
+    public void setOrderId(Long payId) {
+        this.orderId = orderId;
     }
     public String getStatus() {
         return status;
