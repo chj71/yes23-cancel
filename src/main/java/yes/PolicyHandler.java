@@ -15,11 +15,20 @@ public class PolicyHandler{
 
     }
 
+    @Autowired
+    CancellationRepository cancellationRepository;
+
     @StreamListener(KafkaProcessor.INPUT)
     public void wheneverPayCancelled_Cancel(@Payload PayCancelled payCancelled){
 
         if(payCancelled.isMe()){
             System.out.println("##### listener Cancel : " + payCancelled.toJson());
+
+            Cancellation cancellation = new Cancellation();
+            cancellation.setPayId(payCancelled.getId());
+            cancellation.setStatus("Delivery Canceled");
+
+            cancellationRepository.save(cancellation);
         }
     }
 
